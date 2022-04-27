@@ -1,17 +1,31 @@
 package com.newsapp.newsapp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
 
-@Entity // This tells Hibernate to make a table out of this class
+import javax.persistence.*;
+
+@Entity
+@Table(name = "news")
 public class News {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
+
+
+    @Column(name="title")
+    @NotNull
     private String title;
+
+
+    @Column(name="description")
+    @NotNull
     private String description;
-    private String imageLocation;
+
+    @Lob
+    @Column
+    private byte[] image;
+
+
 
     public String getTitle() {
         return title;
@@ -28,18 +42,17 @@ public class News {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getImageLocation() {
-        return imageLocation;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setImageLocation(String imageLocation) {
-        this.imageLocation = imageLocation;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
 
     @Override
     public String toString() {
-        return "User [title=" + title + ", description=" + description + ", imageLocation=" + imageLocation + "]";
+        return "User [title=" + title + ", description=" + description;
     }
 }

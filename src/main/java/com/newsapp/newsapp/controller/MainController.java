@@ -33,7 +33,6 @@ public class MainController {
     @PostMapping("/user")
     public String submitForm(@ModelAttribute("news") News news,@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         fileService.uploadFile(file);
-        news.setImageLocation(fileService.getCopyLocation());
 //        System.out.println(news);
         return "/user";
     }
@@ -47,9 +46,7 @@ public class MainController {
     public String admin(Model model) {
         News news = new News();
         model.addAttribute("news", news);
-        news.setImageLocation(loc);
         System.out.println(news.getDescription());
-        System.out.println(news.getImageLocation());
         return "/admin";
     }
 
@@ -68,5 +65,7 @@ public class MainController {
     public String error403() {
         return "/error/403";
     }
+
+
 
 }
