@@ -34,16 +34,11 @@ public class MainController {
     public String submitForm(@ModelAttribute("news") News news,@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         fileService.uploadFile(file);
         news.setImageLocation(fileService.getCopyLocation());
-        System.out.println(news);
+//        System.out.println(news);
         return "/user";
     }
 
     @GetMapping("/")
-    public String home1() {
-        return "/home";
-    }
-
-    @GetMapping("/home")
     public String home() {
         return "/home";
     }
@@ -55,7 +50,6 @@ public class MainController {
         news.setImageLocation(loc);
         System.out.println(news.getDescription());
         System.out.println(news.getImageLocation());
-
         return "/admin";
     }
 
