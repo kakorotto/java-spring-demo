@@ -1,6 +1,6 @@
 ﻿# java-spring-demo
 
-## features
+## Tech stack
 
 1) spring boot
 2) spring MVC
